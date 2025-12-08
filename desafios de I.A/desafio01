@@ -1,0 +1,26 @@
+Desafio 2 (nível iniciante com type)
+Crie um type Produto com:
+
+nome: string
+preco: number
+emEstoque: boolean
+Crie uma função que recebe um objeto desse tipo e retorna uma frase assim:
+O produto NOME custa R$PRECO e está/no momento está EM ESTOQUE / FORA DE ESTOQUE.
+
+📌 Dica: use operador ternário.
+✅ Exemplo do resultado esperado
+O produto Notebook custa R$3500 e está EM ESTOQUE.
+🤓 Gabarito (só veja depois de tentar!)
+<details> <summary>Mostrar resposta</summary>
+type Produto = {
+  nome: string;
+  preco: number;
+  emEstoque: boolean;
+};
+
+function infoProduto(produto: Produto): string {
+  const status = produto.emEstoque ? "EM ESTOQUE" : "FORA DE ESTOQUE";
+  return `O produto ${produto.nome} custa R$${produto.preco} e está ${status}.`;
+}
+
+console.log(infoProduto({ nome: "Notebook", preco: 3500, emEstoque: true }));
