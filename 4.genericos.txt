@@ -1,0 +1,41 @@
+🟦 O que é um Genérico (explicação simples)
+Genérico é como uma caixinha que pode guardar qualquer tipo, mas que continua dizendo ao TypeScript qual tipo está lá dentro.
+É como dizer:
+
+“Vou criar uma função que funciona pra vários tipos, mas quero manter a segurança do TypeScript.”
+
+Sem genéricos → você usa any, perde segurança.
+Com genéricos → você usa T, mantém segurança.
+
+🟩 Primeiro passo: função sem genérico (errada)
+function identidade(valor: any) {
+  return valor;
+}
+
+Problema:
+Se eu fizer:
+const x = identidade(10);
+
+O TypeScript não sabe que x é um número.
+x vira any.
+
+🟦 Agora, mesma função com Generics (jeito certo)
+function identidade<T>(valor: T): T {
+  return valor;
+}
+
+Aqui T é um tipo genérico.
+Se você mandar um número, T vira number.
+Se mandar string, T vira string.
+
+Exemplos:
+const a = identidade(10);      // number
+const b = identidade("oi");    // string
+
+
+⚠️ A mágica: o TypeScript deduz o tipo automaticamente.
+Genéricos servem para que uma função, interface ou classe se adapte automaticamente ao tipo do argumento — mantendo a segurança do TypeScript.
+✔️ Se você passa number → ele vira number
+✔️ Se você passa string → ele vira string
+✔️ Se você passa objeto → ele vira esse objeto
+
